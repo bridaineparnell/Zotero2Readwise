@@ -1,5 +1,15 @@
 from argparse import ArgumentParser
-from distutils.util import strtobool
+from argparse import ArgumentTypeError
+
+def strtobool(val):
+    """Convert a string representation of truth to true (1) or false (0)."""
+    val = val.lower()
+    if val in ('y', 'yes', 't', 'true', 'on', '1'):
+        return 1
+    elif val in ('n', 'no', 'f', 'false', 'off', '0'):
+        return 0
+    else:
+        raise ArgumentTypeError(f"Invalid truth value: {val}")
 
 from zotero2readwise.helper import write_library_version, read_library_version
 from zotero2readwise.zt2rw import Zotero2Readwise
