@@ -1,4 +1,4 @@
-rfrom dataclasses import dataclass, field
+from dataclasses import dataclass, field
 from json import dump
 from os import environ
 from typing import Dict, List, Optional
