@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+rfrom dataclasses import dataclass, field
 from json import dump
 from os import environ
 from typing import Dict, List, Optional
@@ -86,7 +86,7 @@ def get_zotero_client(
         try:
             library_id = environ["ZOTERO_LIBRARY_ID"]
         except KeyError:
-            raise ParamNotPassed(
+            raise ParamNotPassedError(
                 "No value for library_id is found. "
                 "You can set it as an environment variable `ZOTERO_LIBRARY_ID` or use `library_id` to set it."
             )
@@ -95,7 +95,7 @@ def get_zotero_client(
         try:
             api_key = environ["ZOTERO_KEY"]
         except KeyError:
-            raise ParamNotPassed(
+            raise ParamNotPassedError(
                 "No value for api_key is found. "
                 "You can set it as an environment variable `ZOTERO_KEY` or use `api_key` to set it."
             )
