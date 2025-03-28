@@ -34,6 +34,12 @@ jobs:
           poetry config virtualenvs.create false
           poetry config virtualenvs.in-project false
 
+      - name: 🛠️ Regenerate poetry.lock
+        run: poetry lock --no-update
+
+      - name: 🔄 Install dependencies
+        run: poetry install --no-root
+
       - name: Install dependencies with Poetry
         run: poetry install --no-root
 
