@@ -4,7 +4,7 @@ from os import environ
 from typing import Dict, List, Optional
 
 from pyzotero.zotero import Zotero
-from pyzotero.zotero_errors import ParamNotPassedError, UnsupportedParams
+from pyzotero.zotero_errors import ParamNotPassedError as ParamNotPassed, UnsupportedParams
 
 from zotero2readwise import FAILED_ITEMS_DIR
 
@@ -86,7 +86,7 @@ def get_zotero_client(
         try:
             library_id = environ["ZOTERO_LIBRARY_ID"]
         except KeyError:
-            raise ParamNotPassedError(
+            raise ParamNotPassed(
                 "No value for library_id is found. "
                 "You can set it as an environment variable `ZOTERO_LIBRARY_ID` or use `library_id` to set it."
             )
@@ -95,7 +95,7 @@ def get_zotero_client(
         try:
             api_key = environ["ZOTERO_KEY"]
         except KeyError:
-            raise ParamNotPassedError(
+            raise ParamNotPassed(
                 "No value for api_key is found. "
                 "You can set it as an environment variable `ZOTERO_KEY` or use `api_key` to set it."
             )
