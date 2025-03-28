@@ -72,3 +72,8 @@ jobs:
         if: steps.srelease.outputs.released == 'true'
         with:
           github_token: ${{ secrets.GH_TOKEN }}
+
+      - name: Verify GitHub Token Permissions
+        run: |
+          curl -H "Authorization: token ${{ secrets.GH_TOKEN }}" https://api.github.com/user
+
